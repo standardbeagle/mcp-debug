@@ -5,6 +5,7 @@
 *.so
 *.dylib
 mcp-server
+mcp-debug
 
 # Test binary, built with `go test -c`
 *.test
