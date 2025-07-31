@@ -1,0 +1,7 @@
+# Empty configuration for testing dynamic management
+servers: []
+
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3

@@ -1,0 +1,23 @@
+# Configuration for testing with mcp-tui
+# This will aggregate tools from multiple MCP servers
+
+servers:
+  # Math operations server
+  - name: "math-server"
+    prefix: "math"
+    transport: "stdio"
+    command: "./test-servers/math-server"
+    timeout: "10s"
+
+  # File operations server  
+  - name: "file-server"
+    prefix: "file"
+    transport: "stdio"
+    command: "./test-servers/file-server"
+    timeout: "10s"
+
+# Proxy configuration
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3

@@ -1,0 +1,11 @@
+servers:
+  - name: "lifecycle-server"
+    prefix: "test"
+    transport: "stdio"
+    command: "./test-servers/lifecycle-server-v2"
+    timeout: "10s"
+
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3

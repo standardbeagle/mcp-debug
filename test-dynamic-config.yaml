@@ -1,0 +1,11 @@
+servers:
+  - name: "math-server"
+    prefix: "math"
+    transport: "stdio"
+    command: "./test-servers/math-server"
+    timeout: "10s"
+
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3

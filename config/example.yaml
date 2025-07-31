@@ -1,0 +1,49 @@
+# Dynamic MCP Proxy Server Configuration
+# This example shows how to configure the proxy to connect to multiple MCP servers
+
+servers:
+  # Example 1: Local MCP server using stdio transport
+  - name: "local-tools"
+    prefix: "local"
+    transport: "stdio"
+    command: "/path/to/local-mcp-server"
+    args: ["--verbose"]
+    env:
+      DEBUG: "1"
+      API_KEY: "${LOCAL_API_KEY}"
+    timeout: "30s"
+
+  # Example 2: Another local server with different tools
+  - name: "math-server"
+    prefix: "math"
+    transport: "stdio"
+    command: "./math-mcp-server"
+    timeout: "10s"
+
+  # Example 3: HTTP-based MCP server (future feature)
+  # - name: "remote-api"
+  #   prefix: "api"
+  #   transport: "http"
+  #   url: "http://localhost:8080"
+  #   auth:
+  #     type: "bearer"
+  #     token: "${API_TOKEN}"
+  #   timeout: "15s"
+
+# Proxy-level settings
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3
+
+# Usage:
+# 1. Copy this file and modify server configurations
+# 2. Set environment variables for ${VARIABLE} expansions
+# 3. Run: mcp-server --proxy --config /path/to/your-config.yaml
+#
+# The proxy will:
+# - Connect to all configured servers at startup
+# - Discover their tools automatically
+# - Prefix tool names (e.g., "calculate" becomes "math_calculate")
+# - Forward tool calls to the appropriate server
+# - Provide all tools through a single MCP interface

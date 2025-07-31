@@ -1,0 +1,12 @@
+# Test configuration for the dynamic MCP proxy
+servers:
+  - name: "test-server"
+    prefix: "test"
+    transport: "stdio"
+    command: "./mcp-server"  # Use our own server as a test target
+    timeout: "10s"
+
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3
