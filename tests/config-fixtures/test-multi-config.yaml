@@ -1,0 +1,30 @@
+# Comprehensive test configuration for dynamic MCP proxy
+# Tests multiple servers with different tool sets
+
+servers:
+  # Math operations server
+  - name: "math-server"
+    prefix: "math"
+    transport: "stdio"
+    command: "../../test-servers/math-server"
+    timeout: "10s"
+
+  # File operations server  
+  - name: "file-server"
+    prefix: "file"
+    transport: "stdio"
+    command: "../../test-servers/file-server"
+    timeout: "10s"
+
+  # Original hello world server for comparison
+  - name: "hello-server"
+    prefix: "hello"
+    transport: "stdio"
+    command: "../../mcp-debug"  # Our main server in standalone mode
+    timeout: "10s"
+
+# Proxy configuration
+proxy:
+  healthCheckInterval: "30s"
+  connectionTimeout: "10s"
+  maxRetries: 3
