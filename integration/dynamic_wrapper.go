@@ -720,7 +720,7 @@ func (w *DynamicWrapper) handleServerReconnect(ctx context.Context, request mcp.
 
 	// Update registry with new client (tools keep same names)
 	for _, tool := range tools {
-		prefixedName := fmt.Sprintf("%s_%s", name, tool.Name)
+		prefixedName := fmt.Sprintf("%s_%s", serverInfo.Config.Prefix, tool.Name)
 
 		// Check if this tool name exists in our registered tools
 		found := false
